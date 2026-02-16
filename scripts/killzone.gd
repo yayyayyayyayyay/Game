@@ -8,3 +8,4 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	if body.has_method("die"):
 		body.call_deferred("die")
+ 

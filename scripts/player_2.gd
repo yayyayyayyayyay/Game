@@ -9,9 +9,12 @@ const JUMP_VELOCITY = -300.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collider: CollisionShape2D = $CollisionShape2D
 @onready var coyote_timer2: Timer = $CoyoteTimer2
+#@onready var rewind_rect: ColorRect = get_node("/root/Game/CanvasLayer/RewindOverlay")
+#@onready var rewind_material := rewind_rect.material as ShaderMaterial
+@onready var rewind_overlay := get_node("/root/Game/CanvasLayer")
 var extra_jump = true
 
-const MAX_HISTORY := 300
+const MAX_HISTORY := 500
 @export var rewind_lerp := 0.85
 
 var rewinding := false
@@ -41,12 +44,13 @@ func die() -> void:
 		return
 	dead = true
 	# Stop all movement
+	death_state_index = history.size()
 	velocity = Vector2.ZERO
 	if collider:
 		collider.set_deferred("disabled", true)
 	animated_sprite_2d.stop()
 	animated_sprite_2d.modulate = Color(1, 0.4, 0.4) # red tint
-	# Freeze the game
+	
 	Engine.time_scale = 0.0
 
 func revive() -> void:
@@ -143,7 +147,9 @@ func rewind():
 
 func start_rewind() -> void:
 	velocity = Vector2.ZERO
+	rewind_overlay.request_rewind_start(false)
 	$CollisionShape2D.disabled = true
 
 func stop_rewind() -> void:
+	rewind_overlay.request_rewind_stop(false)
 	$CollisionShape2D.set_deferred("disabled", false)
