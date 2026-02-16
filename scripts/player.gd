@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var dead := false
 var death_state_index := -1
-
+var is_player_one := true
 var extra_unlocked = false
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
@@ -43,15 +43,11 @@ func die() -> void:
 	if dead:
 		return
 	dead = true
-
 	death_state_index = history.size()
 	velocity = Vector2.ZERO
-	if collider:
-		collider.set_deferred("disabled", true)
+	#set_collision_mask_value(0, false)
 	animated_sprite_2d.stop()
-	animated_sprite_2d.modulate = Color(1, 0.4, 0.4) # red tint
-
-	Engine.time_scale = 0.0
+	animated_sprite_2d.modulate = Color(1, 0.4, 0.4)
 
 func revive() -> void:
 	dead = false
@@ -146,10 +142,15 @@ func rewind():
 		revive()
 
 func start_rewind() -> void:
+	rewinding = true
 	velocity = Vector2.ZERO
-	rewind_overlay.request_rewind_start(true)
-	$CollisionShape2D.disabled = true
+	rewind_overlay.request_rewind_start(is_player_one)
+	set_collision_layer_value(1, false) 
+	set_collision_mask_value(2, false)
 
 func stop_rewind() -> void:
-	rewind_overlay.request_rewind_stop(true)
-	$CollisionShape2D.set_deferred("disabled", false)
+	rewinding = false
+	rewind_overlay.request_rewind_stop(is_player_one)
+
+	set_collision_layer_value(1, true)
+	set_collision_mask_value(2, true)
