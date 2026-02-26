@@ -3,7 +3,10 @@ uniform float strength : hint_range(0.0, 1.0) = 0.0;
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 
 void fragment() {
-    // Get the color from the screen behind the CanvasLayer
+	
+	
+	
+	// Get the color from the screen behind the CanvasLayer
     vec4 tex_color = texture(screen_texture, SCREEN_UV);
     
     // Calculate grayscale

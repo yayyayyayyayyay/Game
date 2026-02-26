@@ -15,9 +15,15 @@ run/main_scene="uid://dnlqbv4yg4de4"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SceneTransition="*res://scenes/scene_transition.tscn"
+
 [global_group]
 
 player=""
+rewind_overlay=""
+game=""
 
 [input]
 

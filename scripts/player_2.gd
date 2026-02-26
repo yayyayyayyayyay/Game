@@ -11,7 +11,7 @@ const JUMP_VELOCITY = -300.0
 @onready var coyote_timer2: Timer = $CoyoteTimer2
 #@onready var rewind_rect: ColorRect = get_node("/root/Game/CanvasLayer/RewindOverlay")
 #@onready var rewind_material := rewind_rect.material as ShaderMaterial
-@onready var rewind_overlay := get_node("/root/Game/CanvasLayer")
+@onready var rewind_overlay := get_tree().get_first_node_in_group("rewind_overlay")
 var extra_jump = true
 
 const MAX_HISTORY := 500
@@ -144,13 +144,18 @@ func rewind():
 func start_rewind() -> void:
 	rewinding = true
 	velocity = Vector2.ZERO
-	rewind_overlay.request_rewind_start(is_player_one)
-	set_collision_layer_value(1, false) 
+
+	if rewind_overlay:
+		rewind_overlay.request_rewind_start(is_player_one)
+
+	set_collision_layer_value(1, false)
 	set_collision_mask_value(2, false)
 
 func stop_rewind() -> void:
 	rewinding = false
-	rewind_overlay.request_rewind_stop(is_player_one)
+
+	if rewind_overlay:
+		rewind_overlay.request_rewind_stop(is_player_one)
 
 	set_collision_layer_value(1, true)
 	set_collision_mask_value(2, true)
