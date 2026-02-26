@@ -9,6 +9,7 @@ func _ready():
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		if not players_in_goal.has(body):
+			print("app end!")
 			players_in_goal.append(body)
 			check_goal_met()
 
@@ -25,5 +26,7 @@ func check_goal_met():
 			tween.tween_property(player, "global_position", global_position, 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 			tween.tween_property(player, "scale", Vector2.ZERO, 0.5)
 			tween.tween_property(player, "rotation", deg_to_rad(360), 0.5)
+			print("triggered!")
 		if game:
+			print("trigger happy!")
 			game.load_level("res://scenes/level_2.tscn")

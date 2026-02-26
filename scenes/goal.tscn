@@ -179,6 +179,7 @@ animations = [{
 }]
 
 [node name="Goal" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_0qle8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -190,3 +191,6 @@ sprite_frames = SubResource("SpriteFrames_q5lgk")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.9952806
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
