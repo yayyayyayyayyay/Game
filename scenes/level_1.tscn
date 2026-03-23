@@ -357,6 +357,7 @@ _data = {
 }
 
 [node name="Level1" type="Node2D"]
+position = Vector2(1, 0)
 script = SubResource("GDScript_e3sih")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -366,7 +367,7 @@ limit_bottom = 200
 limit_smoothed = true
 position_smoothing_enabled = true
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("1_2os1m")]
+[node name="Player" parent="." instance=ExtResource("1_2os1m")]
 z_index = 1
 position = Vector2(-167, 130)
 rotation = 0.010505345
@@ -463,7 +464,8 @@ libraries = {
 autoplay = "RESET"
 
 [node name="Goal" parent="." instance=ExtResource("8_e3sih")]
-position = Vector2(333, -62)
+position = Vector2(336, -53)
+rotation = 3.1415927
 
 [node name="Slimes" type="Node" parent="."]
 
