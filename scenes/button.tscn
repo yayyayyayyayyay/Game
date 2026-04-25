@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtf0xd8s8m617"]
+
+[ext_resource type="Texture2D" uid="uid://d3fkgdkpc7hqj" path="res://assets/sprites/button2.png" id="1_mi6dp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhj8v"]
+atlas = ExtResource("1_mi6dp")
+region = Rect2(0, 0, 12, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q610"]
+atlas = ExtResource("1_mi6dp")
+region = Rect2(12, 0, 12, 5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i7y4x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhj8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3q610")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Button" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i7y4x")
+frame_progress = 0.13745745
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

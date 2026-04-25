@@ -105,6 +105,27 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
+	if direction != 0:
+		var space_state = get_world_2d().direct_space_state
+
+		var shape = $CollisionShape2D.shape as RectangleShape2D
+		var half_width = shape.size.x * 0.5
+
+		var origin = global_position + Vector2(direction * half_width, 0)
+
+		var query = PhysicsRayQueryParameters2D.create(
+			origin,
+			origin + Vector2(direction * 20, 0)
+		)
+
+		query.exclude = [self]
+
+		var result = space_state.intersect_ray(query)
+
+		if result:
+			var hit_body = result.collider
+			if hit_body and hit_body.is_in_group("pushable"):
+				hit_body.velocity.x = direction * SPEED
 	move_and_slide()
 
 	if was_on_floor and not is_on_floor():

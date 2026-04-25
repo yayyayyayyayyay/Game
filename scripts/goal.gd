@@ -29,4 +29,4 @@ func check_goal_met():
 			print("triggered!")
 		if game:
 			print("trigger happy!")
-			game.load_level("res://scenes/level_2.tscn")
+			game.load_next_level()

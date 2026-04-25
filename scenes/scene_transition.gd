@@ -2,13 +2,15 @@ extends CanvasLayer
 
 @onready var anim = $AnimationPlayer
 
-func fade_to_scene(target_scene: String):
-	# Fade to black
+func _ready():
+	anim.play("fade")
+	anim.seek(anim.current_animation_length) # jump to end (fully black)
+	anim.stop()
+
+func fade_to_black():
 	anim.play("fade")
 	await anim.animation_finished
-	
-	# Change scene
-	get_tree().change_scene_to_file(target_scene)
-	
-	# Fade back in
+
+func fade_from_black():
 	anim.play_backwards("fade")
+	
