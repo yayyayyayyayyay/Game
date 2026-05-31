@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnlqbv4yg4de4"]
+[gd_scene load_steps=7 format=3 uid="uid://dnlqbv4yg4de4"]
 
 [ext_resource type="Script" uid="uid://p6qsrayvglqb" path="res://scripts/game.gd" id="1_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://cvehod7hjhmy0" path="res://scenes/pause_menu.tscn" id="2_iywne"]
 [ext_resource type="Script" uid="uid://bfwjh1263wyk4" path="res://scripts/RewindOverlay.gd" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bnsd6smo333q" path="res://scenes/level_1.tscn" id="2_yqjtg"]
 [ext_resource type="Shader" uid="uid://clmxx0xb0qh7e" path="res://shaders/grayscale.gdshader" id="3_lbhrr"]
@@ -22,8 +23,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="LevelRoot" type="Node2D" parent="."]
 
 [node name="Level1" parent="LevelRoot" instance=ExtResource("2_yqjtg")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_iywne")]

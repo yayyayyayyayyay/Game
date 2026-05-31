@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bodygf0u0a6pb"]
+
+[ext_resource type="Script" uid="uid://br0usxtx8xgv0" path="res://fireball.gd" id="1_7kba2"]
+[ext_resource type="Texture2D" uid="uid://1wlvg7v4uvh2" path="res://assets/sprites/fireball1.png" id="2_43lgj"]
+[ext_resource type="Texture2D" uid="uid://bqcf7xi7mgsbd" path="res://assets/sprites/fireball2.png" id="3_vqoxj"]
+[ext_resource type="PackedScene" uid="uid://bcl7xh4o7tqcw" path="res://scenes/killzone.tscn" id="4_86oub"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7kba2"]
+radius = 6.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qaphm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_43lgj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vqoxj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mi4h5"]
+radius = 6.0
+
+[node name="Fireball" type="Area2D"]
+position = Vector2(4, 0)
+collision_layer = 15
+collision_mask = 15
+script = ExtResource("1_7kba2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 0)
+shape = SubResource("CircleShape2D_7kba2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_qaphm")
+autoplay = "default"
+frame_progress = 0.60436034
+
+[node name="Killzone" parent="." instance=ExtResource("4_86oub")]
+position = Vector2(-1, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-3, 2)
+shape = SubResource("CircleShape2D_mi4h5")

@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://ptvrfxvx7w00"]
+
+[ext_resource type="Script" uid="uid://d3v0kea7c52jy" path="res://scripts/cannon.gd" id="1_jfr8q"]
+[ext_resource type="PackedScene" uid="uid://bodygf0u0a6pb" path="res://scenes/fireball.tscn" id="2_0285d"]
+[ext_resource type="Texture2D" uid="uid://c5gfrd0qxb3yi" path="res://assets/sprites/cannon2.png" id="3_22shy"]
+[ext_resource type="Texture2D" uid="uid://ca1ylxrjbqepv" path="res://assets/sprites/cannon1.png" id="4_8ssa1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5saov"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_22shy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_22shy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8ssa1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_22shy")
+}],
+"loop": false,
+"name": &"recoil",
+"speed": 30.0
+}]
+
+[node name="Cannon" type="Node2D"]
+script = ExtResource("1_jfr8q")
+fireball_scene = ExtResource("2_0285d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visibility_layer = 31
+sprite_frames = SubResource("SpriteFrames_5saov")
+animation = &"recoil"
+autoplay = "idle"
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(-7, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

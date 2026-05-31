@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://sxn3ey6u0be0"]
+
+[ext_resource type="Script" uid="uid://djw6isr5ufdxv" path="res://scripts/laser_emitter.gd" id="1_fmkpm"]
+[ext_resource type="Texture2D" uid="uid://bjt7qwv1d6p4v" path="res://assets/sprites/laser_emitter.png" id="2_6fowk"]
+
+[node name="LaserEmitter" type="Node2D" groups=["laser"]]
+script = ExtResource("1_fmkpm")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -1000)
+collision_mask = 15
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, -994)
+width = 4.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="LaserEmitter" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("2_6fowk")

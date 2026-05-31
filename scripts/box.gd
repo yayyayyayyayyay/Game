@@ -4,16 +4,15 @@ extends CharacterBody2D
 
 func _ready():
 	add_to_group("pushable")
-	add_to_group("pressable") # for buttons later
 
 func _physics_process(delta):
-	# Apply gravity
+	# Gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	else:
 		velocity.y = 0
 
-	# Slow horizontal movement (fake friction)
-	velocity.x = move_toward(velocity.x, 0, 400 * delta)
-
 	move_and_slide()
+
+	# STOP horizontal movement AFTER moving
+	velocity.x = 0

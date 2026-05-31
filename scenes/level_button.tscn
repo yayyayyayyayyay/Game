@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv2blr5bykgxr"]
+
+[ext_resource type="Script" uid="uid://b2ixteefnyfih" path="res://scripts/level_button.gd" id="1_i0sit"]
+
+[node name="level_button" type="Button"]
+custom_minimum_size = Vector2(150, 150)
+offset_right = 8.0
+offset_bottom = 8.0
+pivot_offset = Vector2(75, 75)
+script = ExtResource("1_i0sit")
