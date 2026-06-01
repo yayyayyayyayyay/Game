@@ -65,3 +65,22 @@ func _on_button_green_2_pressed_changed(pressed: Variant) -> void:
 
 	ray.enabled = active
 	line.visible = active
+
+func _on_button_yellow_pressed_changed(pressed: Variant) -> void:
+	active = !pressed
+
+	ray.enabled = active
+	line.visible = active
+
+func _on_button_green_pressed_changed(pressed: Variant) -> void:
+	active = !pressed
+
+	ray.enabled = active
+	line.visible = active
+
+
+func _on_button_2_pressed_changed(pressed: Variant) -> void:
+	active = !pressed
+
+	ray.enabled = active
+	line.visible = active

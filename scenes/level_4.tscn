@@ -237,7 +237,7 @@ _data = {
 &"move": SubResource("Animation_dinhu")
 }
 
-[node name="Level4" type="Node"]
+[node name="Level8" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(7.6293945e-06, 9.536743e-07)
@@ -492,23 +492,22 @@ button_color = Color(1, 0, 0, 1)
 
 [node name="Cannon" parent="Cannons" instance=ExtResource("14_hy5x3")]
 position = Vector2(-177, -89)
-start_delay = 0.5
 
 [node name="Cannon2" parent="Cannons" instance=ExtResource("14_hy5x3")]
 position = Vector2(-177, -57)
-start_delay = 1.0
+start_delay = 0.5
 
 [node name="Cannon3" parent="Cannons" instance=ExtResource("14_hy5x3")]
 position = Vector2(-177, -25)
-start_delay = 1.5
+start_delay = 1.0
 
 [node name="Cannon4" parent="Cannons" instance=ExtResource("14_hy5x3")]
 position = Vector2(-177, 7)
-start_delay = 2.0
+start_delay = 1.5
 
 [node name="Cannon5" parent="Cannons" instance=ExtResource("14_hy5x3")]
 position = Vector2(-177, 39)
-start_delay = 2.5
+start_delay = 2.0
 
 [connection signal="pressed_changed" from="Button" to="Lasers/LaserEmitter" method="_on_button_pressed_changed"]
 [connection signal="pressed_changed" from="Button" to="Lasers/LaserEmitter2" method="_on_button_pressed_changed"]

@@ -50,8 +50,4 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
-columns = 5
-
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "USELESS BUTTON DO NOT CLICK"
+columns = 6

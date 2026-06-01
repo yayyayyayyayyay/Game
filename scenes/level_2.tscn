@@ -225,7 +225,7 @@ _data = {
 &"move": SubResource("Animation_gee14")
 }
 
-[node name="Level2" type="Node"]
+[node name="Level4" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(29.000008, 9.000001)

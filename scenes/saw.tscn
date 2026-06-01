@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://sebg7t5wu1j7"]
+
+[ext_resource type="Script" uid="uid://bb8dvkmwko5cu" path="res://scripts/saw.gd" id="1_846d5"]
+[ext_resource type="Texture2D" uid="uid://cwgu8tuwgd2y2" path="res://assets/sprites/saw.png" id="2_161w5"]
+[ext_resource type="PackedScene" uid="uid://bcl7xh4o7tqcw" path="res://scenes/killzone.tscn" id="3_cxxip"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iw68n"]
+radius = 5.0
+
+[node name="Saw" type="Node2D"]
+z_index = 1
+script = ExtResource("1_846d5")
+
+[node name="Saw" type="Sprite2D" parent="."]
+texture = ExtResource("2_161w5")
+
+[node name="Killzone" parent="." instance=ExtResource("3_cxxip")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("CircleShape2D_iw68n")

@@ -9,7 +9,12 @@ var levels = [
 	"res://scenes/level_4.tscn",
 	"res://scenes/level_5.tscn",
 	"res://scenes/level_6.tscn",
-	"res://scenes/level_7.tscn"
+	"res://scenes/level_7.tscn",
+	"res://scenes/level_8.tscn",
+	"res://scenes/level_9.tscn",
+	"res://scenes/level_10.tscn",
+	"res://scenes/level_11.tscn",
+	"res://scenes/level_12.tscn"
 ]
 
 var button_scene = preload("res://scenes/level_button.tscn")

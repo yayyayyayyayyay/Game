@@ -14,7 +14,7 @@ const JUMP_VELOCITY = -300.0
 @onready var rewind_overlay := get_tree().get_first_node_in_group("rewind_overlay")
 var extra_jump = true
 
-const MAX_HISTORY := 500
+const MAX_HISTORY := 1000
 @export var rewind_lerp := 0.85
 
 var rewinding := false
