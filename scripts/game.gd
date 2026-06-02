@@ -10,9 +10,7 @@ var player2: Node = null
 func _ready():
 	await SceneTransition.fade_from_black()
 
-	load_level(
-		GameManager.get_current_level_path()
-	)
+	load_level(GameManager.get_current_level_path())
 
 	refresh_players()
 
@@ -21,18 +19,20 @@ func load_next_level():
 	GameManager.current_level_index += 1
 
 	if GameManager.current_level_index >= GameManager.levels.size():
-		print("No more levels!")
+		GameManager.current_level_index = 0
+
+		await SceneTransition.fade_to_black()
+		get_tree().change_scene_to_file("res://scenes/level_select.tscn")
 		return
 
-	get_tree().paused = true
+	GameManager.complete_level()
 
+	get_tree().paused = true
 	await SceneTransition.fade_to_black()
 
 	load_level(GameManager.get_current_level_path())
-	GameManager.complete_level()
-	
-	await SceneTransition.fade_from_black()
 
+	await SceneTransition.fade_from_black()
 	get_tree().paused = false
 
 
@@ -57,29 +57,20 @@ func _process(_delta):
 		if player1 == null or player2 == null:
 			return
 
-	# Player 2 rewinds Player 1
-	player1.set_rewinding(
-		Input.is_action_pressed("p2_rewind_other")
-	)
+	player1.set_rewinding(Input.is_action_pressed("p2_rewind_other"))
 
-	# Player 1 rewinds Player 2
-	player2.set_rewinding(
-		Input.is_action_pressed("p1_rewind_other")
-	)
+	player2.set_rewinding(Input.is_action_pressed("p1_rewind_other"))
 
 
 func load_level(scene_path: String):
-	# Clear old level
 	for child in level_root.get_children():
 		child.queue_free()
-
-	# Load new level
+	
 	var packed := load(scene_path) as PackedScene
 	var level := packed.instantiate()
 
 	level_root.add_child(level)
 
-	# Wait one frame so nodes enter tree properly
 	await get_tree().process_frame
 
 	refresh_players()
@@ -96,9 +87,7 @@ func restart_level():
 
 	await SceneTransition.fade_to_black()
 
-	load_level(
-		GameManager.get_current_level_path()
-	)
+	load_level(GameManager.get_current_level_path())
 
 	await SceneTransition.fade_from_black()
 

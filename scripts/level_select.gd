@@ -38,6 +38,4 @@ func create_level_buttons():
 func _on_level_pressed(level_index):
 	GameManager.current_level_index = level_index
 
-	get_tree().change_scene_to_file(
-		"res://scenes/game.tscn"
-	)
+	get_tree().change_scene_to_file("res://scenes/game.tscn")

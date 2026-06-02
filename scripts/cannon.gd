@@ -20,10 +20,8 @@ func _ready():
 		timer.start()
 
 func _shoot():
-	# Play recoil animation
 	sprite.play("recoil")
-
-	# Spawn fireball
+	
 	var fireball = fireball_scene.instantiate()
 	get_tree().current_scene.add_child(fireball)
 

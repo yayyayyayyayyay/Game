@@ -12,11 +12,15 @@ func _ready():
 		push_error("RewindOverlay: ShaderMaterial not assigned")
 
 func request_rewind_start(player1):
-	if(player1): player1_r = true
-	else: player2_r = true
+	if(player1): 
+		player1_r = true
+	else: 
+		player2_r = true
 	material.set_shader_parameter("strength", 1.00 if (player1_r || player2_r) else 0.0)
 
 func request_rewind_stop(player1):
-	if(player1): player1_r = false
-	else: player2_r = false
+	if(player1): 
+		player1_r = false
+	else: 
+		player2_r = false
 	material.set_shader_parameter("strength", 1.00 if (player1_r || player2_r) else 0.0)

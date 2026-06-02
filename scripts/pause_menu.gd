@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var root = $Control
-@onready var restart_button = $Panel/VBoxContainer/RestartButton
+@onready var restart_button = $Panel/VBoxContainer/RestartLevelButton
 
 func _ready():
 	root.hide()
@@ -24,9 +24,7 @@ func _on_resume_button_pressed():
 func _on_level_select_button_pressed():
 	get_tree().paused = false
 
-	get_tree().change_scene_to_file(
-		"res://scenes/level_select.tscn"
-	)
+	get_tree().change_scene_to_file("res://scenes/level_select.tscn")
 	
 
 func _on_restart_level_button_pressed() -> void:

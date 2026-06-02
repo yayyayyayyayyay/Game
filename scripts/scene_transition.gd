@@ -4,7 +4,7 @@ extends CanvasLayer
 
 func _ready():
 	anim.play("fade")
-	anim.seek(anim.current_animation_length) # jump to end (fully black)
+	anim.seek(anim.current_animation_length, true)
 	anim.stop()
 
 func fade_to_black():

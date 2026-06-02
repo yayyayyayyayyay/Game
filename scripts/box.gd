@@ -21,9 +21,7 @@ func record_state():
 	if history.size() >= MAX_HISTORY:
 		history.pop_front()
 
-	history.append(
-		BoxState.new(global_position)
-	)
+	history.append(BoxState.new(global_position))
 
 func _physics_process(delta):	
 	if rewindable and should_rewind():
@@ -38,7 +36,6 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-	# STOP horizontal movement AFTER moving
 	velocity.x = 0
 
 func should_rewind() -> bool:

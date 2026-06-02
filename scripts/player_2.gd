@@ -9,8 +9,6 @@ const JUMP_VELOCITY = -300.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collider: CollisionShape2D = $CollisionShape2D
 @onready var coyote_timer2: Timer = $CoyoteTimer2
-#@onready var rewind_rect: ColorRect = get_node("/root/Game/CanvasLayer/RewindOverlay")
-#@onready var rewind_material := rewind_rect.material as ShaderMaterial
 @onready var rewind_overlay := get_tree().get_first_node_in_group("rewind_overlay")
 var extra_jump = true
 
@@ -45,7 +43,6 @@ func die() -> void:
 	dead = true
 	death_state_index = history.size()
 	velocity = Vector2.ZERO
-	#set_collision_mask_value(0, false)
 	animated_sprite_2d.stop()
 	animated_sprite_2d.modulate = Color(1, 0.4, 0.4)
 
@@ -54,7 +51,6 @@ func revive() -> void:
 	if collider:
 		collider.disabled = false
 	animated_sprite_2d.modulate = Color(1,1,1)
-	# Resume normal time
 	Engine.time_scale = 1.0
 
 func _physics_process(delta: float) -> void:
@@ -71,13 +67,11 @@ func _physics_process(delta: float) -> void:
 
 	var was_on_floor = is_on_floor()
 
-	# Add gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	else:
 		extra_jump = false
 
-	# Handle jump
 	if Input.is_action_just_pressed("jump2") and (is_on_floor() or !coyote_timer2.is_stopped() or (extra_jump and extra_unlocked)):
 		velocity.y = JUMP_VELOCITY
 		extra_jump = false
@@ -89,7 +83,6 @@ func _physics_process(delta: float) -> void:
 	elif direction < 0:
 		animated_sprite_2d.flip_h = true
 
-	# Animations
 	if is_on_floor():
 		extra_jump = true
 		if direction == 0:
@@ -114,7 +107,6 @@ func _physics_process(delta: float) -> void:
 		var body = collision.get_collider()
 		var normal = collision.get_normal()
 
-		# Only push if hitting the SIDE (not top/bottom)
 		if body and body.is_in_group("pushable") and abs(normal.x) > 0.9:
 			body.velocity.x = direction * SPEED*0.5
 			pushing = true
@@ -130,15 +122,7 @@ func record_state() -> void:
 	if history.size() >= MAX_HISTORY:
 		history.pop_front()
 
-	history.append(
-		PlayerState.new(
-			global_position,
-			velocity,
-			animated_sprite_2d.animation,
-			animated_sprite_2d.frame,
-			animated_sprite_2d.flip_h
-		)
-	)
+	history.append(PlayerState.new(global_position,velocity,animated_sprite_2d.animation,animated_sprite_2d.frame,animated_sprite_2d.flip_h))
 
 func rewind():
 	if history.is_empty():

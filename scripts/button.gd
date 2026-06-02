@@ -16,7 +16,6 @@ func _ready():
 	body_exited.connect(_on_body_exited)
 
 func _on_body_entered(body):
-	# Optional filtering
 	if body.is_in_group("button_pressers"):
 		press_count += 1
 		update_button()
@@ -38,9 +37,3 @@ func update_button():
 			sprite.play("released")
 
 		pressed_changed.emit(is_pressed)
-
-		#for path in targets:
-			#var target = get_node_or_null(path)
-#
-			#if target.has_method("set_active"):
-				#target.set_active(!is_pressed)
