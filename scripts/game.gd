@@ -20,9 +20,8 @@ func load_next_level():
 
 	if GameManager.current_level_index >= GameManager.levels.size():
 		GameManager.current_level_index = 0
-
-		await SceneTransition.fade_to_black()
-		get_tree().change_scene_to_file("res://scenes/level_select.tscn")
+		#await SceneTransition.fade_to_black()
+		get_tree().change_scene_to_file("res://scenes/win.tscn")
 		return
 
 	GameManager.complete_level()

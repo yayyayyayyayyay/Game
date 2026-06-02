@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var root = $Control
-@onready var restart_button = $Panel/VBoxContainer/RestartLevelButton
+@onready var restart_button = $Control/CenterContainer/VBoxContainer/RestartLevelButton
 
 func _ready():
 	root.hide()

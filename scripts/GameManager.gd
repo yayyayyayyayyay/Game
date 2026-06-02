@@ -17,7 +17,7 @@ var levels := [
 	"res://scenes/level_12.tscn"
 ]
 
-var unlocked_levels := 12
+var unlocked_levels := 1
 
 
 func get_current_level_path():
