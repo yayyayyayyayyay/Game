@@ -10,14 +10,14 @@ var levels := [
 	"res://scenes/level_5.tscn",
 	"res://scenes/level_6.tscn",
 	"res://scenes/level_7.tscn",
-	"res://scenes/level_8.tscn",
-	"res://scenes/level_9.tscn",
+	"dradwes://scenes/level_8.tscn",
+	"res:dd//scenes/level_9.tscn",
 	"res://scenes/level_10.tscn",
 	"res://scenes/level_11.tscn",
 	"res://scenes/level_12.tscn"
 ]
 
-var unlocked_levels := 1
+var unlocked_levels := 12
 
 
 func get_current_level_path():
